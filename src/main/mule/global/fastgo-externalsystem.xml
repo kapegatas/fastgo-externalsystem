@@ -35,7 +35,11 @@ attributes.uriParams.serviceType]]></ee:set-variable>
 				<logger level="INFO" doc:name="Logger" doc:id="ede13d91-c225-42b2-8a91-a5a6bcadb9c9" message="Schedules flow called for FastGo External System For TransactionId #[attributes.headers.transactionId]"/>
 				<flow-ref doc:name="FastGo-GetSchedules-ImplementationFlow" doc:id="44f69585-225f-4cb2-832c-668a331206ed" name="FastGo-GetSchedules-ImplementationFlow"/>
 			</when>
-		</choice>
+			<otherwise >
+				<logger level="INFO" doc:name="Logger" doc:id="8955a75d-f506-410d-867e-d81452976beb" message="URI Paramaters is Not Correct for FastGo External System For TransactionId: #[vars.transactionId]"/>
+			</otherwise>
+		
+</choice>
 		<logger level="INFO" doc:name="Logger" doc:id="35947fcb-ecf9-4b24-9816-db6d9e68ae65" message="Response Sent for FastGo External System For TransactionId #[attributes.headers.transactionId]"/>
 		<error-handler >
 			<on-error-propagate enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="b4d1d679-cdf4-436c-b78e-ceafda200325" >
